@@ -90,7 +90,7 @@ public class EmpDAO {
 					+ "WHERE EMPLOYEE_ID = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
-			
+
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				vo = new EmpVO();
@@ -232,14 +232,16 @@ public class EmpDAO {
 			String sql = "UPDATE EMPLOYEES "//
 					+ "SET LAST_NAME = ?, "//
 					+ "EMAIL =  ?, "//
-					+ "JOB_ID = ? "//
+					+ "JOB_ID = ?, "//
+					+ "MANAGER_ID = ? "//
 					+ "WHERE EMPLOYEE_ID = ?";
 			// 2.psmt(sql구문)
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getLast_name());
 			psmt.setString(2, vo.getEmail());
 			psmt.setString(3, vo.getJob_id());
-			psmt.setString(4, vo.getEmployee_id());
+			psmt.setString(4, vo.getManager_id());
+			psmt.setString(5, vo.getEmployee_id());
 			// 3.execute
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 업데이트.");
