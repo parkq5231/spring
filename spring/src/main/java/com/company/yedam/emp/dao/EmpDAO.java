@@ -90,7 +90,7 @@ public class EmpDAO {
 					+ "WHERE EMPLOYEE_ID = ?";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
-
+			
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				vo = new EmpVO();
@@ -98,7 +98,7 @@ public class EmpDAO {
 				vo.setEmployee_id(rs.getString("employee_id"));
 				vo.setFirst_name(rs.getString("first_name"));
 				vo.setLast_name(rs.getString("last_name"));
-				vo.setEmail(rs.getString(4));
+				vo.setEmail(rs.getString("email"));
 				vo.setPhone_number(rs.getString("phone_number"));
 				vo.setHire_date(rs.getDate("hire_date"));
 				vo.setJob_id(rs.getString("job_id"));
@@ -230,20 +230,16 @@ public class EmpDAO {
 			// 1.connect
 			conn = JdbcUtil.connect();
 			String sql = "UPDATE EMPLOYEES "//
-					+ "SET FIRST_NAME = ?, "//
-					+ "LAST_NAME = ?, "//
+					+ "SET LAST_NAME = ?, "//
 					+ "EMAIL =  ?, "//
-					+ "JOB_ID = ?, "//
-					+ "SALARY = ? "//
+					+ "JOB_ID = ? "//
 					+ "WHERE EMPLOYEE_ID = ?";
 			// 2.psmt(sql구문)
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getFirst_name());
-			psmt.setString(2, vo.getLast_name());
-			psmt.setString(3, vo.getEmail());
-			psmt.setString(4, vo.getJob_id());
-			psmt.setString(5, vo.getSalary());
-			psmt.setString(6, vo.getEmployee_id());
+			psmt.setString(1, vo.getLast_name());
+			psmt.setString(2, vo.getEmail());
+			psmt.setString(3, vo.getJob_id());
+			psmt.setString(4, vo.getEmployee_id());
 			// 3.execute
 			int r = psmt.executeUpdate();
 			System.out.println(r + "건 업데이트.");
