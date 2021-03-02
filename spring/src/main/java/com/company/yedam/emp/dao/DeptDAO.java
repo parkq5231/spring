@@ -1,6 +1,5 @@
 package com.company.yedam.emp.dao;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +14,6 @@ public class DeptDAO {
 	ResultSet rs;
 	private static DeptDAO instance;
 
-	
 	//
 	public static DeptDAO getInstance() {
 		if (instance == null) {
@@ -54,5 +52,29 @@ public class DeptDAO {
 		}
 		return list;
 	}
+	// 추가
 
+	public void deptInsert(DeptVO vo) {
+		try {
+			conn = JdbcUtil.connect();
+			String sql = "INSERT INTO DEPARTMENTS "//
+					+ "(DEPARTMENT_ID, "//
+					+ "DEPARTMENT_NAME, "//
+					+ "MANAGER_ID, "//
+					+ "LOCATION_ID) "//
+					+ "VALUES(?,?,?,?)";
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, vo.getDepartment_id());
+			psmt.setString(2, vo.getDepartment_name());
+			psmt.setInt(3, vo.getManager_id());
+			psmt.setInt(4, vo.getLocation_id());
+			int r = psmt.executeUpdate();
+			System.out.println(r + "건 추가.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.disconnect(conn);
+		}
+	}
+	// end of insert
 }

@@ -62,7 +62,7 @@
 <c:set var="url" value="empUpdate" />
 </c:if>
 <form action="${url}" method="post" name="frm">
-	employee_id <input type="number" name="employee_id"
+	employee_id <input type="number" name="employee_id" value="${empVO.employee_id}"
 				<c:if test="${not empty empVO.employee_id}"> readonly="readonly"</c:if> ><br>
 	first_name  <input name="first_name" value="${empVO.first_name}"><br>
 	last_name   <input name="last_name" value="${empVO.last_name}"><br>

@@ -11,8 +11,10 @@
 	$(function() {
 		$(".btnSelect").on("click", function() {
 			var empid = $(this).closest("div").find("span").eq(0).html();
+			var lastName = $(this).closest("div").find("span:eq(1)").html();
 			//
 			opener.document.frm.manager_id.value = empid;
+			opener.document.frm.name.value=lastName;
 			//$(opener.document.find("[name=manager_id]").val(empid));
 			window.close();
 

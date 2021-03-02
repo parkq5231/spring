@@ -70,7 +70,7 @@ public class EmpController {
 		return "redirect:empList";
 	}
 	// 이메일체크
-
+	
 	// 사원검색
 	@RequestMapping("/empSearch")
 	public String empSearch(HttpServletRequest request) {
