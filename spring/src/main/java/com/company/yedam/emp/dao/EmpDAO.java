@@ -1,14 +1,13 @@
 package com.company.yedam.emp.dao;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository	//@Component	상속
 public class EmpDAO {
 
 	Connection conn;
@@ -253,5 +252,6 @@ public class EmpDAO {
 			JdbcUtil.disconnect(conn);
 		}
 	} // end of update
-
+		// delete
+	
 } // end of class

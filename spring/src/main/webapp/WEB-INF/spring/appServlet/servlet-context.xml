@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -22,7 +24,21 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.company.yedam" />
-	
-	
+	<!-- 자동설정 -->
+	<aop:aspectj-autoproxy />
+<!-- 수동설정 -->	
+<!--<beans:bean id="logAdvice" class="com.company.yedam.common.LogAdvice" />
+	<beans:bean id="afterAdvice" class="com.company.yedam.common.AfterAdvice"/>
+	<aop:config>
+		<aop:pointcut 	expression="execution(* com.company.yedam..*Impl.*(..))" id="allpointcut" />
+
+		<aop:aspect ref="afterAdvice">
+			<aop:after-returning method="afterLog" pointcut-ref="allpointcut" returning="returnObj" />
+		</aop:aspect>
+		<aop:aspect ref="logAdvice">
+			<aop:before method="printLog" pointcut-ref="allpointcut" />
+		</aop:aspect>
+	</aop:config>
+	 -->
 	
 </beans:beans>

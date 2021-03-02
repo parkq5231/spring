@@ -26,10 +26,10 @@
 	<h2>사원검색</h2>
 	<c:forEach items="${list}" var="emp">
 		<div class="row">
-			<span>${emp.employee_id }</span>
-			<span>${emp.first_name }</span>
-			<span>${emp.last_name }</span>
-			<span>${emp.hire_date }</span>
+			<span>${emp.employee_id}</span>
+			<span>${emp.first_name}</span>
+			<span>${emp.last_name}</span>
+			<span>${emp.hire_date}</span>
 			<span><button type="button" class="btnSelect">선택</button></span>
 		</div>
 	</c:forEach>

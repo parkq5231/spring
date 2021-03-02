@@ -6,7 +6,7 @@
 		</Console>
 		<Console name="console_com" target="SYSTEM_OUT">
 			<PatternLayout
-				pattern="%d{dd HH:mm} %5p [%c{-3}] %M-%L %m%n" />
+				pattern="%d{dd HH:mm} %5p [%c{-3}] %l %m%n" />
 		</Console>
 
 		<File name="MyFile" fileName="d:/logs/app.log">
